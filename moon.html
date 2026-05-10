@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Xat Sociale</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*,*::before,*::after{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+@property --a1{
+  syntax:'<angle>';
+  initial-value:0deg;
+  inherits:false
+}
+
+@property --a2{
+  syntax:'<angle>';
+  initial-value:60deg;
+  inherits:false
+}
+
+@property --a3{
+  syntax:'<angle>';
+  initial-value:120deg;
+  inherits:false
+}
+
+:root{
+  --night:#020510;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  background:var(--night);
+  font-family:'Raleway',sans-serif;
+  position:relative;
+}
+
+/* =========================
+   BACKGROUND STARS
+========================= */
+
+.stars{
+  position:absolute;
+  inset:0;
+
+  background-image:
+    radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 25% 35%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 10%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 55% 25%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 70% 5%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 80% 30%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 15% 55%,rgba(255,255,255,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 35% 70%,rgba(255,255,255,.2) 0%,transparent 100%);
+
+  animation:twinkle 8s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+  0%{opacity:.6}
+  50%{opacity:.9}
+  100%{opacity:.5}
+}
+
+/* =========================
+   SUBTLE TWINKLE STARS
+========================= */
+
+.twinkle-star{
+  position:absolute;
+
+  width:2px;
+  height:2px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.8);
+
+  opacity:.12;
+
+  animation:softBlink ease-in-out infinite;
+}
+
+.twinkle-star:nth-child(1){
+  top:14%;
+  left:18%;
+  animation-duration:5s;
+}
+
+.twinkle-star:nth-child(2){
+  top:22%;
+  left:72%;
+  animation-duration:7s;
+}
+
+.twinkle-star:nth-child(3){
+  top:38%;
+  left:58%;
+  animation-duration:6s;
+}
+
+.twinkle-star:nth-child(4){
+  top:10%;
+  left:48%;
+  animation-duration:8s;
+}
+
+.twinkle-star:nth-child(5){
+  top:28%;
+  left:34%;
+  animation-duration:6.5s;
+}
+
+.twinkle-star:nth-child(6){
+  top:18%;
+  left:84%;
+  animation-duration:9s;
+}
+
+@keyframes softBlink{
+
+  0%,100%{
+    opacity:.12;
+  }
+
+  50%{
+    opacity:.4;
+  }
+
+}
+
+/* =========================
+   CINEMATIC SHOOTING STARS
+========================= */
+
+.shooting-stars{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:4;
+  pointer-events:none;
+
+  transform:rotateZ(45deg);
+}
+
+.shooting_star{
+  position:absolute;
+
+  height:2px;
+
+  background:
+  linear-gradient(
+    -45deg,
+    rgba(180,220,255,.95),
+    rgba(120,180,255,0)
+  );
+
+  border-radius:999px;
+
+  filter:
+    drop-shadow(0 0 6px rgba(180,220,255,.8));
+
+animation:
+tail 12s ease-in-out infinite,
+shooting 12s ease-in-out infinite;
+}
+
+.shooting_star::before,
+.shooting_star::after{
+
+  content:'';
+
+  position:absolute;
+
+  top:calc(50% - 1px);
+  right:0;
+
+  height:2px;
+
+  background:
+  linear-gradient(
+    -45deg,
+    rgba(0,0,255,0),
+    rgba(180,220,255,.95),
+    rgba(0,0,255,0)
+  );
+
+  border-radius:100%;
+
+animation:
+shining 12s ease-in-out infinite;
+}
+
+.shooting_star::before{
+  transform:
+  translateX(50%)
+  rotateZ(45deg);
+}
+
+.shooting_star::after{
+  transform:
+  translateX(50%)
+  rotateZ(-45deg);
+}
+
+/* positions */
+
+.shooting_star:nth-child(1){
+  top:10%;
+  left:15%;
+  animation-delay:1s;
+}
+
+.shooting_star:nth-child(2){
+  top:30%;
+  left:40%;
+  animation-delay:5s;
+}
+
+.shooting_star:nth-child(3){
+  top:20%;
+  left:65%;
+  animation-delay:9s;
+}
+
+.shooting_star:nth-child(4){
+  top:45%;
+  left:25%;
+  animation-delay:13s;
+}
+
+.shooting_star:nth-child(5){
+  top:15%;
+  left:80%;
+  animation-delay:17s;
+}
+
+/* animations */
+
+@keyframes tail{
+
+  0%{
+    width:0;
+    opacity:0;
+  }
+
+  15%{
+    width:90px;
+    opacity:1;
+  }
+
+  40%{
+    width:120px;
+    opacity:1;
+  }
+
+  100%{
+    width:0;
+    opacity:0;
+  }
+
+}
+
+@keyframes shining{
+
+  0%{
+    width:0;
+  }
+
+  50%{
+    width:24px;
+  }
+
+  100%{
+    width:0;
+  }
+
+}
+
+@keyframes shooting{
+
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(420px);
+  }
+
+}
+
+/* =========================
+   MOON
+========================= */
+
+.moon{
+  position:absolute;
+  top:152px;
+  left:227px;
+
+  width:180px;
+  height:180px;
+
+  background-color:#FFF1F9;
+
+  border-radius:100%;
+
+  box-shadow:
+    inset #FFF1F9 -4px 4px 12px 4px,
+    inset rgba(0,0,0,0.2) -12px 12px 60px 4px,
+    #1B3040 0 0 24px 1px,
+    #FFF1F9 0 0 80px 4px;
+
+  z-index:5;
+}
+
+.moon:before,
+.moon:after{
+  content:"";
+  opacity:.6;
+  position:absolute;
+  background-color:#FFF1F9;
+  border-radius:100%;
+  box-shadow:inset rgba(0,0,0,0.06) 2px 4px 4px 2px;
+}
+
+.moon:before{
+  top:14%;
+  right:26%;
+  width:5%;
+  height:10%;
+  transform:rotate(-45deg);
+}
+
+.moon:after{
+  top:20%;
+  right:30%;
+  width:15%;
+  height:20%;
+  transform:rotate(-35deg);
+}
+
+/* =========================
+   AURORA
+========================= */
+
+.aurora{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  filter:blur(35px);
+  opacity:.75;
+  animation:auroraPulse 12s ease-in-out infinite alternate;
+}
+
+@keyframes auroraPulse{
+
+  0%{
+    opacity:.6;
+    filter:blur(60px)
+  }
+
+  50%{
+    opacity:.75;
+    filter:blur(40px)
+  }
+
+  100%{
+    opacity:.6;
+    filter:blur(45px)
+  }
+
+}
+
+.band{
+  position:absolute;
+  width:200%;
+  left:-50%;
+  border-radius:50%;
+  transform-origin:center center;
+}
+
+.band-1{
+  height:55vh;
+  top:-10vh;
+
+  background:
+  conic-gradient(
+    from var(--a1) at 40% 60%,
+    transparent 0%,
+    rgba(0,255,200,.5) 15%,
+    rgba(0,170,255,.4) 30%,
+    transparent 45%,
+    rgba(170,68,255,.3) 60%,
+    transparent 75%
+  );
+
+animation:band1 40s linear infinite;
+}
+
+@keyframes band1{
+  to{
+    --a1:360deg
+  }
+}
+
+.band-2{
+  height:60vh;
+  top:5vh;
+
+  background:
+  conic-gradient(
+    from var(--a2) at 60% 40%,
+    transparent 0%,
+    rgba(255,102,170,.4) 10%,
+    rgba(0,255,200,.3) 25%,
+    transparent 40%,
+    rgba(0,170,255,.5) 55%,
+    transparent 70%
+  );
+
+animation:band2 55s linear infinite reverse;}
+
+@keyframes band2{
+  to{
+    --a2:420deg
+  }
+}
+
+.band-3{
+  height:50vh;
+  top:-5vh;
+
+  background:
+  conic-gradient(
+    from var(--a3) at 30% 70%,
+    transparent 0%,
+    rgba(68,255,170,.4) 20%,
+    transparent 35%,
+    rgba(255,102,170,.3) 50%,
+    rgba(170,68,255,.4) 65%,
+    transparent 80%
+  );
+
+  animation:band3 48s linear infinite;
+}
+
+@keyframes band3{
+  to{
+    --a3:480deg
+  }
+}
+
+/* =========================
+   HORIZON
+========================= */
+
+.horizon{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+
+  height:30vh;
+
+  background:
+  linear-gradient(
+    to top,
+    rgba(0,20,15,.95) 0%,
+    rgba(0,50,30,.6) 40%,
+    transparent 100%
+  );
+}
+
+/* =========================
+   MOUNTAINS
+========================= */
+
+.mountains{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:22vh;
+}
+
+.mountains svg{
+  width:100%;
+  height:100%;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+  position:absolute;
+
+  top:50%;
+  left:80px;
+
+  transform:translateY(-50%);
+
+  z-index:10;
+
+  text-align:left;
+
+  color:#fff;
+
+  max-width:500px;
+}
+
+.content .eyebrow{
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(0,255,200,.7);
+  margin-bottom:20px;
+  font-weight:300;
+}
+
+.content h1{
+  font-size:clamp(32px,6vw,80px);
+  font-weight:200;
+  letter-spacing:8px;
+  text-transform:uppercase;
+  line-height:1;
+  margin-bottom:20px;
+
+  text-shadow:
+    0 0 40px rgba(0,255,200,.3),
+    0 0 80px rgba(0,170,255,.2);
+}
+
+.content p{
+  font-size:15px;
+  font-weight:300;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.45);
+  line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.am-credit-dark{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex-wrap:wrap;
+  gap:10px;
+
+  padding:12px 24px;
+
+  background:rgba(2,5,16,.8);
+
+  backdrop-filter:blur(12px);
+
+  border-top:1px solid rgba(0,255,200,.1);
+
+  font-size:12px;
+
+  z-index:20;
+}
+
+.am-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:rgba(255,255,255,.35);
+}
+
+.am-left strong{
+  color:rgba(0,255,200,.8);
+}
+
+.am-links{
+  display:flex;
+  gap:8px;
+}
+
+.am-links a{
+  color:rgba(255,255,255,.3);
+  text-decoration:none;
+  font-size:11px;
+
+  padding:4px 12px;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:20px;
+
+  transition:all .2s;
+}
+
+.am-links a:hover{
+  color:rgba(0,255,200,.8);
+  border-color:rgba(0,255,200,.25);
+}
+
+@media(max-width:768px){
+
+  .content{
+    left:30px;
+    right:30px;
+  }
+
+  .moon{
+    width:120px;
+    height:120px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- subtle blinking stars -->
+<div class="twinkle-star"></div>
+<div class="twinkle-star"></div>
+<div class="twinkle-star"></div>
+<div class="twinkle-star"></div>
+<div class="twinkle-star"></div>
+<div class="twinkle-star"></div>
+
+<!-- cinematic shooting stars -->
+<div class="shooting-stars">
+
+  <div class="shooting_star"></div>
+  <div class="shooting_star"></div>
+ 
+
+</div>
+
+<div class="moon"></div>
+
+<div class="aurora">
+  <div class="band band-1"></div>
+  <div class="band band-2"></div>
+  <div class="band band-3"></div>
+</div>
+
+<div class="horizon"></div>
+
+<div class="mountains">
+  <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+
+    <path d="M0,200 L0,140 L80,90 L160,130 L260,60 L360,110 L440,50 L520,95 L620,30 L720,80 L820,20 L900,70 L980,40 L1060,85 L1160,35 L1260,90 L1360,55 L1440,80 L1440,200 Z"
+    fill="#020510"></path>
+
+    <path d="M0,200 L0,160 L100,120 L200,150 L320,100 L420,140 L540,90 L640,130 L760,110 L860,145 L960,105 L1080,135 L1180,115 L1300,140 L1440,120 L1440,200 Z"
+    fill="rgba(0,10,8,.95)"></path>
+
+  </svg>
+</div>
+
+<div class="content">
+
+  <div class="eyebrow">
+    INTERNATIONAL ROOM
+  </div>
+
+  <h1>Sociale</h1>
+
+  <p>xat.com/Sociale</p>
+
+</div>
+
+<footer class="am-credit-dark">
+
+  <div class="am-left">
+    <span>⚡</span>
+    <span>xat <strong>Sociale</strong></span>
+  </div>
+
+  <div class="am-links">
+
+    <a href="https://mondoxat.com target="_blank">
+      Website
+    </a>
+
+    
+
+  </div>
+
+</footer>
+
+</body>
+</html>
